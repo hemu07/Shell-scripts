@@ -1,18 +1,24 @@
-#!/bin/bash
+#!/usr/bin/env bash 
 
-#script to monitor node health 
+######################################################
 
-##############################
+#script to monitor the node health of virtual machines
+#author: Hemali Jayswal
+#Date:
+#Version: V1
 
-set -x #debug mode, print command and then output
-set -e #stop execution if error is encountered in between
-set -o #for inspecting pipe failures
+######################################################
+set -xeo 
+# -x debug mode : shows the command and then output
+# -e exit the script when there is an error, checks for last cmd output when | is used
+# -o if there is pipe used in between then even if first cmd fails but next ome passes then error is ignore and script runs to avoid this use -o checks for "pipefail"
 
 df -h
 free -g
 nproc
 
-ps -ef | grep "amazon" | awk -F" " '{print $2}' #-F means field seprator , coloumns are separated by " " so give space, then it prints out value of 2nd column for the matching search result
-
-
+#see all the processes running
+ps -ef | grep "amazon" | awk -F" " '{print $2}'
+#-e all the process in bg as well, -f full format
+# awk -> print specific column, separated by " "
 
