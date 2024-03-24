@@ -8,7 +8,7 @@
 
 ###############################################################
 
-#set -x # debug mode for runnning script
+#set -x # debug mode for running script
 
 # List S3 buckets
 echo " list s3 buckets: "
